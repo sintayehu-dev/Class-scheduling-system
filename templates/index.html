@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <style>
+        .nav-link {
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+            
+        }
+        header{
+            z-index: 1000;
+            margin-bottom: 10%;
+        }
+    
+        .navbar-nav .nav-link {
+            color: white !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00 !important;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-container img {
+            width: 80%;
+            height:60%;
+            display: block;
+        }
+
+      
+
+        footer {
+            background-color: #000f24;
+            color: white;
+            padding: 4px 0;
+            margin-top: 10%;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        footer p {
+            font-size: 15px;
+            font-family:'Times New Roman', Times, serif;
+            font-weight: bold;  
+        }
+
+        .welcome-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .welcome-container p{
+            margin-top: 5%;
+            margin-right: 20%;
+            margin-bottom: 30px;
+            text-align: left;
+            font-size: 17px;
+        }
+        span{
+            color: #d6ab00;
+        }
+        h1 {
+            color: #001235;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bold;
+            
+        }
+        .info{
+            background-color: blue;
+            color: white;
+            font-size: 17px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            border-radius: 10px;
+            padding: 10px;
+            border: none;
+            width: 120px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            text-align: left;
+        }
+        .info:hover{
+            text-decoration: none;
+            color: white;
+        }
+        main{
+            margin: 2%;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <form id="form1">
+        <header>
+    
+            <nav style="background-color:#031833;" class="navbar navbar-expand-md navbar-dark fixed-top bg-color p-3">
+                <a class="navbar-brand" style="font-weight: bold; font-size: 20px;" href="#"><b><strong style="color: white;">FCSE</strong> | Scheduling System</b></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'help' %}">Help</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="row">
+                <div class="col-lg-6 ">
+                    <div class="welcome-container">
+                        <h1><span>FCSE</span> Class Scheduling System</h1>
+                        <p>We're excited to have you on board. This system is designed to streamline and simplify your class scheduling process, ensuring that both educators and students can effortlessly manage their time and resources.</p>
+                        <a class="info" href="{% url 'aboutus' %}"> more&raquo;</a>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-6">
+                    <div class="image-container">
+                        <img src="{% static 'img/h1.jpg' %}" alt="Banner Image">
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer style="background-color: #000f24; text-align:center">
+            <p>&copy; 2016 Final Project of CS. All rights reserved.</p>
+        </footer>
+    </form>
+</body>
+
+</html>

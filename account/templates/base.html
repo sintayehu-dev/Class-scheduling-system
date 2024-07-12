@@ -1,0 +1,87 @@
+{% load static %}
+
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+  <link href = "{% static 'css/base.css' %}" rel="stylesheet">
+
+  <style>
+    .nav-link{
+      font-size: 20px;
+      font-family: 'Times New Roman', Times, serif;
+      color: white;
+  }
+
+  .navbar-nav .nav-link {
+      color: white !important;
+      transition: color 0.3s ease;
+  }
+
+  .navbar-nav .nav-link:hover {
+      color: #ffcc00 !important;
+  }
+</style>
+</head>
+<body>
+  <header>
+   
+    <nav style="background-color: #031833;" class="navbar navbar-expand-md navbar-dark fixed-top bg-color p-3">
+
+        <a class="navbar-brand " style="font-weight: bold; font-family: 'Times New Roman', Times, serif; font-size: 20px;" href="#"><b> <strong
+                    style="color: white;">FCSE</strong> | Scheduling System</b></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'help' %}">Help</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li> 
+                
+            </ul>
+        </div>
+    </nav>
+</header>
+
+  <div id="header" style="display: none;">
+    {% if request.user.is_authenticated %}
+    <ul class="menu" >
+
+    </ul>
+  {% endif %}
+
+  </div>
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">
+          {{ message|safe }}
+            <a href="#" class="close">x</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+</html>

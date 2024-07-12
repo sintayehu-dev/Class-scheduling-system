@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FCSE | About Us</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <style>
+        .nav-link {
+            font-size: 18px; /* Decreased font size */
+            font-family: 'Times New Roman', Times, serif;
+            color: white !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #007BFF !important; /* Blue color on hover */
+        }
+
+        body {
+            padding-top: 3.5rem;
+        }
+
+        header {
+            margin-bottom: 50px;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .display-4 {
+            font-size: 30px;
+            font-weight: bolder;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .btn {
+            background-color: #031833;
+            color: white;
+            padding: 10px 20px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            color: black;
+            font-weight: bold;
+            background-color: #ffffff;
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 17px;
+        }
+
+        h2 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .footer {
+            background-color: #031833;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                font-size: 14px;
+                padding: 15px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form1">
+        <header>
+            <!--Navigation Bar-->
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #031833;">
+                <a class="navbar-brand" href="#"><b>FCSE | ScheduleView</b></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'pdf_list' %}">Schedule</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'suggestion' %}">Suggestion</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1 class="display-4">About us</h1>
+                    <p>Welcome to ScheduleView, the ideal tool for students and teachers to effortlessly view class schedules.
+                     Our user-friendly platform ensures students and teachers stay organized and informed. Plus, you can provide 
+                     suggestions to help improve the scheduling experience. 
+                    Enhance your educational journey with ScheduleView, your trusted partner in academic scheduling.</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <!-- Additional content can go here -->
+                </div>
+                <hr>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Final Project of CS.</p>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+        <script src="../assets/dist/js/bootstrap.bundle.js"></script>
+    </form>
+</body>
+
+</html>

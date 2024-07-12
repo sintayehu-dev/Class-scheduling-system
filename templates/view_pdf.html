@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ pdf.title }}</title>
+</head>
+<body>
+    <h1>{{ pdf.title }}</h1>
+    <object data="{{ pdf.file.url }}" type="application/pdf" width="100%" height="800px">
+        <p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a href="{{ pdf.file.url }}">click here to download the PDF file.</a></p>
+    </object>
+    <br>
+    <a href="{% url 'pdf_list' %}">Back to PDF List</a>
+
+    
+</body>
+</html>

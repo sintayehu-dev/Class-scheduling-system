@@ -1,0 +1,384 @@
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TTGS | Generate Timetable</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+  <script>
+    window.onload = function () {
+      document.getElementById("download").addEventListener("click", () => {
+        const invoice = this.document.getElementById("timetable");
+        var opt = {
+          margin: 1,
+          filename: 'Timetable.pdf',
+          image: { type: 'jpeg', quality: 1 },
+          html2canvas: { scale: 2 },
+          jsPDF: {
+            unit: 'in',
+            format: [8.3, 11],
+            orientation: 'landscape'
+          }
+        };
+        html2pdf().from(invoice).set(opt).save();
+      })
+    }
+  </script>
+
+  <style>
+    @media print {
+      .table2 {
+        page-break-inside: avoid;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    a,
+    a:hover,
+    a:active {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      text-align: center;
+      font-family: times new roman;
+      color: #08002e;
+    }
+
+    button {
+      border-style: none;
+    }
+
+    .main {
+      max-width: 1200px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    form {
+      margin-top: 3%;
+      margin-left: 18%;
+      margin-right: 12%;
+    }
+
+    form fieldset {
+      padding: 50px;
+      border-width: 25px;
+      border-style: ridge;
+      border-color: #257a7a;
+      box-shadow: 6px 13px 13px 0px black;
+      background-color: #fff;
+
+    }
+
+    .secHead {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      margin-left: 120px;
+      color: #08002e;
+      font-size: 1.8rem;
+    }
+
+    .table2 {
+      margin-bottom: 100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .table2 {
+
+      border: 10px groove rgb(0, 0, 41);
+      box-shadow: 1px 1px 10px rgb(112, 112, 112);
+      background-color: #fff;
+      letter-spacing: 1px;
+      font-size: 1.0rem;
+    }
+
+    .table2 td,
+    th {
+      border: 1px solid rgb(8, 1, 53);
+      padding: 10px 20px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    }
+
+    .table2 th {
+      color: #08002e;
+      font-weight: bolder;
+
+    }
+
+    .table2 td {
+      text-align: left;
+    }
+
+    .submit {
+      color: #fff;
+      background-color: #154bff;
+      border-radius: 10px;
+      padding: 13px 39px;
+      text-align: center;
+      font-size: 17px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-weight: bold;
+      transition: 0.5s;
+      border: none;
+    }
+
+    .submit:hover {
+      background-color: white;
+      color: #000618;
+      box-shadow: -3px -3px 4px #154bff;
+    }
+
+
+    .mid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1em;
+    }
+
+    .rocker {
+      display: inline-block;
+      position: relative;
+      font-size: 2em;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      color: #888;
+      width: 7em;
+      height: 4em;
+      overflow: hidden;
+      border-bottom: 0.5em solid #eee;
+    }
+
+    .rocker-small {
+      font-size: 0.75em;
+      margin: 1em;
+    }
+
+    .rocker::before {
+      content: "";
+      position: absolute;
+      top: 0.5em;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #999;
+      border: 0.5em solid #eee;
+      border-bottom: 0;
+    }
+
+    .rocker input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .switch-left,
+    .switch-right {
+      cursor: pointer;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 2.5em;
+      width: 3em;
+      transition: 0.2s;
+    }
+
+    .switch-left {
+      height: 2.4em;
+      width: 2.75em;
+      left: 0.85em;
+      bottom: 0.4em;
+      background-color: #ddd;
+      transform: rotate(15deg) skewX(15deg);
+    }
+
+    .switch-right {
+      right: 0.5em;
+      bottom: 0;
+      background-color: #bd5757;
+      color: #fff;
+    }
+
+    .switch-left::before,
+    .switch-right::before {
+      content: "";
+      position: absolute;
+      width: 0.4em;
+      height: 2.45em;
+      bottom: -0.45em;
+      background-color: #ccc;
+      transform: skewY(-65deg);
+    }
+
+    .switch-left::before {
+      left: -0.4em;
+    }
+
+    .switch-right::before {
+      right: -0.375em;
+      background-color: transparent;
+      transform: skewY(65deg);
+    }
+
+    input:checked+.switch-left {
+      background-color: #0084d0;
+      color: #fff;
+      bottom: 0px;
+      left: 0.5em;
+      height: 2.5em;
+      width: 3em;
+      transform: rotate(0deg) skewX(0deg);
+    }
+
+    input:checked+.switch-left::before {
+      background-color: transparent;
+      width: 3.0833em;
+    }
+
+    input:checked+.switch-left+.switch-right {
+      background-color: #ddd;
+      color: #888;
+      bottom: 0.4em;
+      right: 0.8em;
+      height: 2.4em;
+      width: 2.75em;
+      transform: rotate(-15deg) skewX(-15deg);
+    }
+
+    input:checked+.switch-left+.switch-right::before {
+      background-color: #ccc;
+    }
+
+
+    input:focus+.switch-left {
+      color: #333;
+    }
+
+    input:checked:focus+.switch-left {
+      color: #fff;
+    }
+
+    input:focus+.switch-left+.switch-right {
+      color: #fff;
+    }
+
+    input:checked:focus+.switch-left+.switch-right {
+      color: #333;
+    }
+
+    .backlink {
+      font-size: 17px;
+      color: rgb(255, 255, 255);
+      margin-left: 10px;
+      background-color: orange;
+      border-radius: 10px;
+      padding: 15px 39px;
+      font-weight: bold;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      transition: 0.5s;
+      margin-right: 5px;
+    }
+
+    .fa-arrow-left{
+      margin-left: 10px;
+    }
+
+    .backlink:hover {
+      box-shadow: 2px 2px 5px rgb(216, 167, 6);
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+      color: rgb(0, 0, 0);
+    }
+  </style>
+
+</head>
+
+<body>
+  <br><br>
+  <a href="{% url 'generate' %}" class="backlink" onclick="openPage('new')" id="defaultOpen"> <i
+      class="fas fa-arrow-left"></i>Back
+  </a> <button class="submit" id="download"> Download </button>
+  <div id="timetable">
+    <h1>FCSE | Class schedule</h1><br>
+
+    {% block content %}
+    {% load static %}
+    {% for section in sections %}
+    <h2 class="secHead">{{ section.section_id }}</h2>
+
+    <table class="table2">
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <tr>
+        <th>Course</th>
+        <th>Block- Room</th>
+        <th>Instructor</th>
+        <th>Class Timing</th>
+      </tr>
+      {% for class in schedule %}
+      {% if class.section == section.section_id %}
+
+      <tr>
+      <tr>
+        <td onclick="toggleButton('{{ section.section_id }}');">{{ class.course.course_name }}</td>
+        <td onclick="toggleButton('{{ section.section_id }}');">{{ class.room.r_number }}</td>
+        <td onclick="toggleButton('{{ section.section_id }}');">{{ class.instructor.name }}</td>
+        <td onclick="toggleButton('{{ section.section_id }}');">{{ class.meeting_time.day }} {{ class.meeting_time.time}}</td>
+
+      </tr>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    {% endfor %}
+    {% endblock %}
+
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+
+</body>
+
+</html>

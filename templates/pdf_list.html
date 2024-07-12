@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #031833;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            font-size: 18px;
+            color: white !important;
+        }
+
+        .nav-link:hover {
+            color: #007BFF !important;
+        }
+
+        .content {
+            padding: 20px;
+            margin-top: 80px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        a:hover {
+            color: black;
+        }
+
+        .download-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .pdf-list-container {
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+            margin-left: 50px;
+            margin-right: 50px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        .pdf-list {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            color: black;
+            margin: 60px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .pdf-list li {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .pdf-list li:last-child {
+            border-bottom: none;
+        }
+
+        .footer {
+            background-color: #031833;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 16px;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                font-size: 14px;
+                padding: 15px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">FCSE | ScheduleView</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pdf_list' %}">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'suggestion' %}">Suggestion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="pdf-list-container">
+        <h1>PDF List</h1>
+        <ul class="pdf-list">
+            {% for pdf in pdfs %}
+                <li>
+                    <a href="{% url 'view_pdf' pdf.pk %}" style="text-decoration:none;text-transform:uppercase;display:inline">{{ pdf.title }}</a>
+                    <a href="{% url 'download_pdf' pdf.pk %}"  style="width: 150px;text-decoration:none;padding-left:8px;color:white; background:blue;border-radius:10px">view & Download</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <footer class="footer bottom-fixed">
+        <p>&copy; 2024 Final Project of CS.</p>
+    </footer>
+</body>
+
+</html>

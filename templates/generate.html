@@ -1,0 +1,431 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TTGS | Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+            margin: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100%;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background-color: #000d30;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-x: hidden;
+            transition: 0.01s;
+            padding-top: 10px;
+            z-index: 1000;
+        }
+
+        .closebtn {
+            color: white;
+            font-size: 25px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-right: 7px;
+        }
+
+        .closebtn:hover {
+            color: white;
+            text-decoration-line: none;
+            margin-right: 7px;
+        }
+
+        .links {
+            color: white;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 20px;
+            margin: 3px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .links i {
+            margin-right: 5px;
+        }
+
+        .system {
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+            color: white;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bold;
+            margin: 4px;
+            margin-right: 20px;
+        }
+
+        .system i {
+            margin-right: 10px;
+        }
+
+        .user {
+            position: static;
+            float: right;
+        }
+
+        .links:hover {
+            background-color: #9fbde7;
+            color: #000d30;
+        }
+
+        .sidebar .active {
+            background-color: #cbd1da;
+            color: #000d30;
+        }
+
+        .wrapper {
+            background-color: rgb(255, 255, 255);
+        }
+
+        .content {
+            background-color: rgb(255, 255, 255);
+            margin-left: 250px;
+            height: 100%;
+            padding: 16px;
+            transition: margin-left 0.01s;
+            flex: 1;
+        }
+
+        main {
+            max-width: 600px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: black;
+            text-align: left;
+        }
+
+        h5 {
+            color: rgb(0, 0, 0);
+            text-align: left;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 16px;
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+        }
+
+        .tabcontent {
+            margin: 20px 0;
+        }
+
+        .tabcontent p {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea,
+        select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .submit,
+        a input[type="button"] {
+            background-color: #0038d1;
+            color: white;
+            border: none;
+            padding: 5px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 15px;
+            text-align: center;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .submit:hover,
+        a input[type="button"]:hover {
+            background-color: #00254d;
+            /* Darker blue */
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a input[type="button"] {
+            background-color: #333;
+            /* Black */
+            margin-right: 10px;
+        }
+
+        a input[type="button"]:hover {
+            background-color: #555;
+            /* Darker black */
+        }
+
+        .header {
+            height: 20px;
+            background-color: #000d30;
+            color: white;
+            border: 1px solid #000d30;
+            padding: 10px;
+            margin-top: 100px;
+            padding-bottom: 30px;
+            margin-left: 1%;
+            box-shadow: -20px -20px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            color: white;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .logout {
+            color: white;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 13px;
+            font-weight: bold;
+            width: 100px;
+            margin-left: 3px;
+            border-radius: 10px;
+            text-align: right;
+            background-color: #ff0000;
+        }
+
+        .logout:hover {
+            background-color: #cf0000;
+            color: white;
+        }
+
+        .logout:active {
+            background-color: #cf0000;
+            color: white;
+        }
+
+        .custom-label {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 13px;
+            font-weight: bold;
+            color: #000000;
+            display: inline-block;
+        }
+
+        img {
+            width: 30px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .nav-icon {
+            font-size: 25px;
+            cursor: pointer;
+            display: none;
+            color: rgb(1, 0, 43);
+            width: 20px;
+            height: 20px;
+            margin-left: 30px;
+            margin-bottom: 10px;
+            padding: 20px;
+            z-index: 3000;
+        }
+
+        .button {
+            background-color: #ff9a02;
+            color: white;
+            box-shadow: 2px 2px 1px gray;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 20px;
+            font-weight: bolder;
+            transition: 0.5s;
+            display: inline;
+        }
+
+        .button:hover {
+            background-color: white;
+            color: #000d30;
+            text-decoration: none;
+            box-shadow: 2px 2px 1px #ff9a02;
+        }
+
+        p {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 18px;
+            font-weight: 700px;
+            text-align: left;
+        }
+
+        h1 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .content {
+                margin-left: 250px;
+                height: 100%;
+            }
+
+            .form main {
+                margin-left: 10px;
+                margin-bottom: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <span class="nav-icon" id="navIcon" onclick="toggleSidebar()">&#9776;</span>
+
+        <nav class="sidebar" id="sidebar">
+            <a href="javascript:void(0)" class="closebtn" id="closebtn" onclick="toggleSidebar()">&#9776;</a>
+
+            <p class="nav-link system">
+                <i class="bi bi-calendar3"></i> <span class="link-title">Class Scheduling System</span>
+            </p>
+            <a class="nav-link links" href="{% url 'admindash' %}">
+                <i class="bi bi-info-circle"></i> <span class="link-title">Get Started</span>
+            </a>
+            <a class="nav-link links " href="{% url 'addInstructors' %}">
+                <i class="bi bi-person-plus"></i> <span class="link-title">Add Teachers</span>
+            </a>
+            <a class="nav-link links" href="{% url 'addRooms' %}">
+                <i class="bi bi-door-open"></i> <span class="link-title">Add Rooms</span>
+            </a>
+            <a class="nav-link links" href="{% url 'addTimings' %}">
+                <i class="bi bi-clock"></i> <span class="link-title">Add Timings</span>
+            </a>
+            <a class="nav-link links " href="{% url 'addCourses' %}">
+                <i class="bi bi-book"></i> <span class="link-title">Add Courses</span>
+            </a>
+            <a class="nav-link links " href="{% url 'addDepts' %}">
+                <i class="bi bi-building"></i> <span class="link-title">Add Departments</span>
+            </a>
+            <a class="nav-link links" href="{% url 'addBatches' %}">
+                <i class="bi bi-diagram-3"></i> <span class="link-title">Add Batch</span>
+            </a>
+            <a class="nav-link links" href="{% url 'addSections' %}">
+                <i class="bi bi-diagram-3"></i> <span class="link-title">Add Sections</span>
+            </a>
+            <a class="nav-link links " href="{% url 'generate' %}">
+                <i class="bi bi-file-earmark-text"></i> <span class="link-title">Generate Timetable</span>
+            </a>
+            
+        </nav>
+
+        <div class="content main-content">
+            <h1 class="display-4">FCSE | Generate Timetable</h1>
+            <p>Please make sure you have entered the correct information for the Teachers, Rooms, Timings, Courses,
+                Sections and Departments
+                into the system. If you have not entered all the information yet please refer below on how to go
+                about feeding all the information into the system.
+                Once confirmed please click on the "Generate Timetable" button below and wait patiently as TTGS
+                generates your timetable for you.</p>
+                <hr>
+            <div class="container">
+                <p><a href="{% url 'timetable' %}" class="button">Generate Timetable &raquo;</a>
+                    <p><a href="{% url 'upload_pdf' %}" class="button">Share&raquo;</a>
+            </div>
+         
+
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var sidebarState = localStorage.getItem("sidebarState");
+            var sidebar = document.getElementById("sidebar");
+            var mainContent = document.querySelector(".main-content");
+            var navIcon = document.getElementById("navIcon");
+            var closebtn = document.getElementById("closebtn");
+            var titles = document.getElementsByClassName("link-title");
+        
+            if (sidebarState === "closed") {
+                sidebar.style.width = "50px";
+                mainContent.style.marginLeft = "50px";
+                navIcon.style.display = "inline";
+                closebtn.style.display = "none";
+                for (var i = 0; i < titles.length; i++) {
+                    titles[i].style.display = "none";
+                }
+            } else {
+                sidebar.style.width = "250px";
+                mainContent.style.marginLeft = "250px";
+                navIcon.style.display = "none";
+                closebtn.style.display = "inline";
+                closebtn.style.marginLeft = "20px";
+                for (var i = 0; i < titles.length; i++) {
+                    titles[i].style.display = "inline";
+                }
+            }
+        
+            function toggleSidebar() {
+                if (sidebar.style.width !== "50px") {
+                    localStorage.setItem("sidebarState", "closed");
+                    sidebar.style.width = "50px";
+                    mainContent.style.marginLeft = "50px";
+                    navIcon.style.display = "inline";
+                    closebtn.style.display = "none";
+                    for (var i = 0; i < titles.length; i++) {
+                        titles[i].style.display = "none";
+                    }
+                } else {
+                    localStorage.setItem("sidebarState", "open");
+                    sidebar.style.width = "250px";
+                    mainContent.style.marginLeft = "250px";
+                    navIcon.style.display = "none";
+                    closebtn.style.display = "inline";
+                    closebtn.style.marginLeft = "20px";
+                    for (var i = 0; i < titles.length; i++) {
+                        titles[i].style.display = "inline";
+                    }
+                }
+            }
+        
+            navIcon.addEventListener("click", toggleSidebar);
+            closebtn.addEventListener("click", toggleSidebar);
+        });
+        
+        
+    
+    </script>
+</body>
+
+</html>

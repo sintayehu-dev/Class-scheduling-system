@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FCSE | About Us </title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+
+    <style>
+        .nav-link {
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00 !important;
+        }
+
+        body {
+            padding-top: 3.5rem;
+        }
+
+        header {
+            margin-bottom: 50px;
+        }
+
+        nav {
+            font-family: sans-serif;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .display-4 {
+            font-size: 30px;
+            font-weight: bolder;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .btn {
+            background-color: #031833;
+            color: white;
+            padding: 10px 20px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            color: black;
+            font-weight: bold;
+            background-color: #ffffff;
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 17px;
+        }
+
+        h2 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form id="form1">
+        <header>
+            <!--Navigation Bar-->
+            <nav style="background-color: #031833;" class="navbar navbar-expand-md navbar-dark fixed-top bg-color p-3">
+
+                <a class="navbar-brand " style="font-weight: bold; font-size: 20px;" href="#"><b> <strong
+                            style="color: white;">FCSE</strong> | Scheduling System</b></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'help' %}">Help</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+
+            <div class="jumbotron">
+                <div class="container">
+                    <h1 class="display-4">About FCSE | Class Scheduling System</h1>
+                    <p></p>
+                    <p>This system was developed as part of our final project,
+                        with the primary goal of addressing the unique scheduling
+                        challenges faced by our faculty. By leveraging advanced algorithms
+                        and user-friendly interfaces, we strive to provide a robust and reliable solution for managing
+                        academic schedules, ensuring optimal use of resources and conflict-free timetables.</p>
+
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>How does it Work?</h2>
+                        <p>Class Scheduling System makes use of a Genetic Algorithm that helps generate the most optimal
+                            and suited
+                            timetable to avoid different conflict and improve effective efficiency in preparing class
+                            schedule time table.</p>
+                        <p><a class="btn " href="{% url 'login' %}" role="button">Let's Start
+                                &raquo;</a></p>
+                    </div>
+                    {% comment %} <div class="col-md-6">
+                        <h2>Terms & Conditions</h2>
+                        <p>If your organization has any concerns regarding the system please click below to read our
+                            Terms and Conditions.</p>
+                        <p><a class="btn " href="{% url '#' %}" role="button">Terms & Conditions
+                                &raquo;</a></p>
+                    </div> {% endcomment %}
+                </div>
+
+                <hr>
+
+            </div>
+
+        </main>
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+        <script src="../assets/dist/js/bootstrap.bundle.js"></script>
+
+    </form>
+</body>
+
+</html>
