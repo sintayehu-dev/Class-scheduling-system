@@ -25,7 +25,7 @@ Navigate to the "Add Batches" section and add the corresponding details. Incorre
 ### 7. Add Sections
 Navigate to the "Add Sections" section and add the corresponding details. Incorrect details can also be removed via the "Edit Sections" option.
 
-### 8. Generate Timetable
+### 8. Generate 
 Navigate to the "Generate Timetable" Section and click on Generate Timetable and wait patiently as our algorithm works its magic.
 
 ## Usage
